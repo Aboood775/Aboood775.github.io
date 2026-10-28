@@ -152,13 +152,17 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
 .tab:hover{color:var(--txt)}
 .tab.on{background:var(--accent);color:#04111A;box-shadow:0 6px 24px color-mix(in srgb,var(--accent) 35%,transparent)}
 .tab-note{color:var(--mut);font-size:15px;margin:14px 0 0;max-width:720px;line-height:1.6}
-.gal{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding:36px 8px 24px;justify-content:safe center;scrollbar-width:thin}
-.gal figure{margin:0;flex:none;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;animation:phoneIn .8s cubic-bezier(.2,.8,.2,1) both}
-.gal figure:nth-child(2){animation-delay:.08s}.gal figure:nth-child(3){animation-delay:.16s}.gal figure:nth-child(4){animation-delay:.24s}
-.gal img{width:238px;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.gal figure:nth-child(even) img{margin-top:36px}
-.gal figure:hover img{transform:translateY(-12px) scale(1.02)}
-.gal figcaption{font-size:13px;color:var(--mut)}
+.gal{display:flex;align-items:center;justify-content:safe center;perspective:1400px;padding:50px 40px 30px;overflow-x:auto;scrollbar-width:thin}
+.gal figure{margin:0 -36px;flex:none;display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;transition:transform .7s cubic-bezier(.2,.8,.2,1),margin .7s cubic-bezier(.2,.8,.2,1)}
+.gal figure:first-child{transform:rotateY(16deg) rotate(-6deg) translateY(20px);z-index:1}
+.gal figure:nth-child(2):not(:last-child){transform:rotateY(6deg) rotate(-2deg);z-index:3}
+.gal figure:nth-child(3):not(:last-child){transform:rotateY(-6deg) rotate(2deg);z-index:2}
+.gal figure:last-child:not(:first-child){transform:rotateY(-16deg) rotate(6deg) translateY(20px);z-index:1}
+.gal:hover figure{transform:none;margin:0 12px}
+.gal img{width:238px;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:phoneIn .8s cubic-bezier(.2,.8,.2,1) both}
+.gal figure:nth-child(2) img{animation-delay:.08s}.gal figure:nth-child(3) img{animation-delay:.16s}.gal figure:nth-child(4) img{animation-delay:.24s}
+.gal figcaption{font-size:13px;color:var(--mut);opacity:0;transition:opacity .5s ease}
+.gal:hover figcaption{opacity:1}
 .mac{margin:36px auto 10px;max-width:980px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 60px rgba(59,130,246,.12);animation:phoneIn .8s cubic-bezier(.2,.8,.2,1) both}
 .mac img{display:block;width:100%;height:auto}
 .wk-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
@@ -186,6 +190,55 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
 .rag-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
 .rag-n{font-size:13px;padding:11px 14px;border-radius:10px;background:#0A101C;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);color:var(--txt)}
 .rag-a{color:var(--accent);font-size:15px;animation:flow 1.6s ease-in-out infinite}
+
+
+/* pinned horizontal projects */
+.pin{position:relative;height:420vh}
+.pin-in{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:72px}
+.pin-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
+.pin-count{font-size:14px;color:var(--mut)}
+.pin-count b{color:var(--accent);font-size:22px}
+.track{display:flex;gap:28px;padding:0 max(32px,calc((100vw - 1200px)/2 + 32px));will-change:transform}
+.pnl{flex:none;width:min(1060px,84vw);height:min(580px,64vh);border-radius:28px;background:var(--panel);border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);overflow:hidden;position:relative;transition:border-color .35s ease,box-shadow .35s ease}
+.pnl:hover{border-color:color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 40px color-mix(in srgb,var(--accent) 12%,transparent)}
+.pnl-b{padding:34px;display:flex;flex-direction:column;gap:12px;overflow:auto}
+.pnl-m{position:relative;background:radial-gradient(circle at 50% 120%,color-mix(in srgb,var(--accent) 24%,transparent),transparent 60%),var(--panel2);border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:1200px;overflow:hidden}
+.fan{display:flex;align-items:center;justify-content:center}
+.fp{flex:none;width:150px;border-radius:22px;border:4px solid #1B2436;overflow:hidden;background:#0A101C;box-shadow:0 26px 50px rgba(0,0,0,.6);margin:0 -22px;transition:transform .6s cubic-bezier(.2,.8,.2,1),margin .6s cubic-bezier(.2,.8,.2,1)}
+.fp img{display:block;width:100%;height:auto}
+.fp:nth-child(1){transform:rotateY(18deg) rotate(-6deg) translateY(16px)}
+.fp:nth-child(2){transform:rotateY(8deg) rotate(-2deg);z-index:2}
+.fp:nth-child(3){transform:rotateY(-8deg) rotate(2deg);z-index:3}
+.fp:nth-child(4){transform:rotateY(-18deg) rotate(6deg) translateY(16px);z-index:2}
+.fp:nth-child(5){transform:rotateY(-24deg) rotate(9deg) translateY(30px);z-index:1}
+.pnl:hover .fp{transform:none;margin:0 6px}
+.wfp{flex:none;width:190px;margin:0 -30px;filter:drop-shadow(0 26px 40px rgba(0,0,0,.6));transition:transform .6s cubic-bezier(.2,.8,.2,1),margin .6s cubic-bezier(.2,.8,.2,1)}
+.wfp img{display:block;width:100%;height:auto}
+.wfp:first-child{transform:rotateY(16deg) rotate(-6deg) translateY(18px);z-index:1}
+.wfp:nth-child(2):not(:last-child){transform:rotateY(6deg) rotate(-2deg);z-index:3}
+.wfp:nth-child(3):not(:last-child){transform:rotateY(-6deg) rotate(2deg);z-index:2}
+.wfp:last-child:not(:first-child){transform:rotateY(-16deg) rotate(6deg) translateY(18px);z-index:1}
+.pnl:hover .wfp{transform:none;margin:0 6px}
+.wmac{width:88%;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.6);transform:perspective(1200px) rotateY(-10deg) rotateX(4deg);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.wmac img{display:block;width:100%;height:auto}
+.pnl:hover .wmac{transform:none}
+.rg{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.rn{font-family:"JetBrains Mono",monospace;font-size:12.5px;padding:11px 14px;border-radius:12px;background:#0A101C;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);color:var(--txt)}
+.ra{color:var(--accent);animation:flow 1.6s ease-in-out infinite}
+@media (max-width:1100px){
+  .pin{height:auto}
+  .pin-in{position:static;height:auto;overflow:visible;padding:120px 0}
+  .track{flex-direction:column;padding:0 32px;transform:none !important}
+  .pnl{width:100%;height:auto;grid-template-columns:minmax(0,1fr)}
+  .pnl-m{border-left:0;border-top:1px solid var(--line);padding:40px 10px;overflow-x:auto;justify-content:safe center}
+}
+@media (max-width:760px){
+  .track{padding:0 16px}
+  .pin-in{padding:80px 0}
+  .pnl-b{padding:24px}
+  .fp{width:118px}
+  .wfp{width:140px;margin:0 -22px}
+}
 
 /* skills */
 .sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
@@ -302,9 +355,10 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
   .wk-title{font-size:46px}
   .tabs{width:100%}
   .tab{flex:1 1 auto;padding:0 12px}
-  .gal{padding:28px 4px 20px;gap:18px}
-  .gal img{width:200px}
-  .gal figure:nth-child(even) img{margin-top:0}
+  .gal{padding:36px 30px 20px}
+  .gal img{width:170px}
+  .gal figure{margin:0 -26px}
+  .gal:hover figure{margin:0 8px}
   .pbody{padding:24px}
   .ctitle{font-size:26px}
   .strip{padding:24px 16px}
@@ -711,20 +765,26 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
     </div>
   </section>
 
+
   <div class="divider"></div>
 
-  <!-- PROJECTS -->
-  <section class="sec" id="projects">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div class="eyebrow mono">04 · Projects</div>
-        <h2 class="sec-title disp">More things I've shipped.</h2>
-        <p class="sec-sub">A RAG system and three production-style mobile apps, each with real authentication, real data and a real API behind it.</p>
+  <!-- PROJECTS (pinned horizontal) -->
+  <section class="pin" id="projects">
+    <div class="pin-in">
+      <div class="wrap" style="width: 100%;">
+        <div class="pin-head">
+          <div>
+            <div class="eyebrow mono">04 · Projects</div>
+            <h2 class="sec-title disp">More things I've shipped.</h2>
+            <p class="sec-sub">A RAG system and three production-style mobile apps, each with real authentication, real data and a real API behind it.</p>
+          </div>
+          <div class="pin-count mono"><b id="pidx">01</b> / 04 · keep scrolling →</div>
+        </div>
       </div>
+      <div class="track" id="ptrack">
 
-      <div class="plist">
-        <article class="prow rv">
-          <div class="pbody">
+        <article class="pnl">
+          <div class="pnl-b">
             <div class="ctype mono">Android · Healthcare</div>
             <h3 class="ctitle disp">DocMate</h3>
             <p class="cdesc">An Android app to browse doctors, book appointments and consult. Patients search by name or specialty, see who is top rated and available today, and book in one tap.</p>
@@ -745,18 +805,16 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
               </a>
             </div>
           </div>
-          <div class="pmedia">
-            <div class="strip">
-              <div class="ph"><img src="assets/docmate-home-light.png" alt="DocMate home screen in light mode with doctor search and top-rated doctors"></div>
-              <div class="ph"><img src="assets/docmate-profile.png" alt="DocMate doctor profile with experience, rating, working hours and book appointment"></div>
-              <div class="ph"><img src="assets/docmate-notifications.png" alt="DocMate notifications: appointment confirmed, reminders and prescriptions"></div>
-              <div class="ph"><img src="assets/docmate-home.webp" alt="DocMate home screen in dark mode with specialty filters and top-rated doctors"></div>
-            </div>
-          </div>
+          <div class="pnl-m"><div class="fan">
+            <div class="fp"><img src="assets/docmate-home-light.png" alt="DocMate home, light"></div>
+            <div class="fp"><img src="assets/docmate-profile.png" alt="DocMate doctor profile"></div>
+            <div class="fp"><img src="assets/docmate-notifications.png" alt="DocMate notifications"></div>
+            <div class="fp"><img src="assets/docmate-home.webp" alt="DocMate home, dark"></div>
+          </div></div>
         </article>
 
-        <article class="prow rv">
-          <div class="pbody">
+        <article class="pnl">
+          <div class="pnl-b">
             <div class="ctype mono">Android · Booking</div>
             <h3 class="ctitle disp">Smart Hotel</h3>
             <p class="cdesc">A hotel booking app with authentication, room booking and guest services. Guests explore room types, check amenities, and confirm a stay with a clear price breakdown.</p>
@@ -775,18 +833,16 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
               </a>
             </div>
           </div>
-          <div class="pmedia">
-            <div class="strip">
-              <div class="ph"><img src="assets/hotel-splash.webp" alt="Smart Hotel splash screen"></div>
-              <div class="ph"><img src="assets/hotel-home.webp" alt="Smart Hotel home screen with room types"></div>
-              <div class="ph"><img src="assets/hotel-room.webp" alt="Smart Hotel room details with amenities"></div>
-              <div class="ph"><img src="assets/hotel-confirm.webp" alt="Smart Hotel booking confirmation with price details"></div>
-            </div>
-          </div>
+          <div class="pnl-m"><div class="fan">
+            <div class="fp"><img src="assets/hotel-splash.webp" alt="Smart Hotel splash"></div>
+            <div class="fp"><img src="assets/hotel-home.webp" alt="Smart Hotel home"></div>
+            <div class="fp"><img src="assets/hotel-room.webp" alt="Smart Hotel room details"></div>
+            <div class="fp"><img src="assets/hotel-confirm.webp" alt="Smart Hotel booking confirmation"></div>
+          </div></div>
         </article>
 
-        <article class="prow rv">
-          <div class="pbody">
+        <article class="pnl">
+          <div class="pnl-b">
             <div class="ctype mono">Flutter · E-commerce</div>
             <h3 class="ctitle disp">Shop App <span style="color: var(--mut); font-size: 18px; font-weight: 500;">· Stylish</span></h3>
             <p class="cdesc">A Flutter e-commerce app with a product catalog, cart and full checkout running on a real API. One codebase, a smooth shopping flow from first launch to order tracking.</p>
@@ -805,19 +861,17 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
               </a>
             </div>
           </div>
-          <div class="pmedia">
-            <div class="strip">
-              <div class="ph"><img src="assets/shop-splash.webp" alt="Shop App welcome screen with login and register"></div>
-              <div class="ph"><img src="assets/shop-home.webp" alt="Shop App home with featured categories and recommendations"></div>
-              <div class="ph"><img src="assets/shop-product.webp" alt="Shop App product details with add to cart"></div>
-              <div class="ph"><img src="assets/shop-favorites.webp" alt="Shop App favorites grid"></div>
-              <div class="ph"><img src="assets/shop-order.webp" alt="Shop App order details with totals"></div>
-            </div>
-          </div>
+          <div class="pnl-m"><div class="fan">
+            <div class="fp"><img src="assets/shop-splash.webp" alt="Shop App welcome"></div>
+            <div class="fp"><img src="assets/shop-home.webp" alt="Shop App home"></div>
+            <div class="fp"><img src="assets/shop-product.webp" alt="Shop App product"></div>
+            <div class="fp"><img src="assets/shop-favorites.webp" alt="Shop App favorites"></div>
+            <div class="fp"><img src="assets/shop-order.webp" alt="Shop App order details"></div>
+          </div></div>
         </article>
 
-        <article class="prow rv">
-          <div class="pbody">
+        <article class="pnl">
+          <div class="pnl-b">
             <div class="ctype mono">RAG · Generative AI · ITI</div>
             <h3 class="ctitle disp">Smart Contract Assistant</h3>
             <p class="cdesc">A RAG assistant that answers questions about contract documents using LLMs and LangChain. Upload a contract, ask in plain language, and get answers grounded in the actual clauses.</p>
@@ -836,18 +890,19 @@ a{color:#E6EDF7;text-decoration:none}a:hover{color:#FFFFFF}
               </a>
             </div>
           </div>
-          <div class="pmedia">
-            <div class="rag mono" aria-hidden="true">
-              <div class="rag-row"><span class="rag-n">Contract PDF</span><span class="rag-a">→</span><span class="rag-n">Chunks + Embeddings</span></div>
-              <span class="rag-a">↓</span>
-              <div class="rag-row"><span class="rag-n">FAISS index</span><span class="rag-a">→</span><span class="rag-n">LangChain retriever</span></div>
-              <span class="rag-a">↓</span>
-              <div class="rag-row"><span class="rag-n">LLM + Guardrails</span><span class="rag-a">→</span><span class="rag-n">Evaluation</span></div>
-              <span class="rag-a">↓</span>
-              <div class="rag-row"><span class="rag-n" style="border-color: var(--accent); color: var(--accent);">Grounded answer in Gradio</span></div>
+          <div class="pnl-m">
+            <div class="rag" aria-hidden="true">
+              <div class="rg"><span class="rn">Contract PDF</span><span class="ra">→</span><span class="rn">Chunks + Embeddings</span></div>
+              <span class="ra">↓</span>
+              <div class="rg"><span class="rn">FAISS index</span><span class="ra">→</span><span class="rn">LangChain retriever</span></div>
+              <span class="ra">↓</span>
+              <div class="rg"><span class="rn">LLM + Guardrails</span><span class="ra">→</span><span class="rn">Evaluation</span></div>
+              <span class="ra">↓</span>
+              <div class="rg"><span class="rn" style="border-color: var(--accent); color: var(--accent);">Grounded answer in Gradio</span></div>
             </div>
           </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -1058,9 +1113,12 @@ setTimeout(term,700);
 var tabs=document.querySelectorAll('[data-tab]'),panes=document.querySelectorAll('[data-pane]');
 tabs.forEach(function(b){b.addEventListener('click',function(){var k=b.dataset.tab;tabs.forEach(function(t){var on=t.dataset.tab===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on)});panes.forEach(function(p){p.hidden=p.dataset.pane!==k})})});
 var pf=document.getElementById('pf'),ring=document.getElementById('ring'),dot=document.getElementById('cdot'),mx=-100,my=-100,rx=-100,ry=-100;
-document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;pf.classList.add('cur-on');var t=e.target.closest&&e.target.closest('a,button,input,textarea,.prow,.chip,.cert,.gal figure');ring.classList.toggle('big',!!t)});
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;pf.classList.add('cur-on');var t=e.target.closest&&e.target.closest('a,button,input,textarea,.pnl,.chip,.cert,.gal figure');ring.classList.toggle('big',!!t)});
 document.addEventListener('mouseleave',function(){pf.classList.remove('cur-on')});
-(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform='translate('+rx+'px,'+ry+'px)';dot.style.transform='translate('+mx+'px,'+my+'px)';requestAnimationFrame(loop)})();
+var pin=document.getElementById('projects'),track=document.getElementById('ptrack'),pidx=document.getElementById('pidx'),last=0;
+(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform='translate('+rx+'px,'+ry+'px)';dot.style.transform='translate('+mx+'px,'+my+'px)';
+if(window.innerWidth>1100){var r=pin.getBoundingClientRect(),span=r.height-window.innerHeight,p=span>0?Math.min(1,Math.max(0,-r.top/span)):0,dist=Math.max(0,track.scrollWidth-window.innerWidth+(parseFloat(getComputedStyle(track).paddingRight)||0));track.style.transform='translateX('+(-p*dist)+'px)';var i=Math.min(4,Math.floor(p*4)+1);if(i!==last){last=i;pidx.textContent='0'+i}}else{track.style.transform=''}
+requestAnimationFrame(loop)})();
 var f=document.getElementById('cform'),sb=document.getElementById('sendbtn');
 function upd(){var g=function(id){return document.getElementById(id).value.trim()};var msg=g('cf-msg'),nm=g('cf-name'),em=g('cf-email'),sub=g('cf-subject');var body=(msg?msg+'\n\n':'')+(nm?'— '+nm:'')+(em?' ('+em+')':'');sb.href='mailto:abdo3hesham@gmail.com?subject='+encodeURIComponent(sub||'Hello Abdelrahman')+'&body='+encodeURIComponent(body)}
 f.addEventListener('input',upd);f.addEventListener('submit',function(e){e.preventDefault()});upd();
